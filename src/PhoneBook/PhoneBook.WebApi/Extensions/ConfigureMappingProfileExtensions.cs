@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using PhoneBook.Entity.DTO;
 using PhoneBook.Entity.Entity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PhoneBook.WebApi.Extensions
 {
@@ -29,6 +25,11 @@ namespace PhoneBook.WebApi.Extensions
                 CreateMap<AddPersonDTO, Person>()
                     .ForMember(p => p.Id, y => y.MapFrom(con => Guid.Empty))
                     .ForMember(p => p.CreationDate, y => y.MapFrom(con => DateTime.Now));
+
+                CreateMap<AddContactInfoDTO, ContactInfo>()
+                   .ForMember(p => p.Id, y => y.MapFrom(con => Guid.Empty))
+                   .ForMember(p => p.CreationDate, y => y.MapFrom(con => DateTime.Now));
+
             }
         }
     }

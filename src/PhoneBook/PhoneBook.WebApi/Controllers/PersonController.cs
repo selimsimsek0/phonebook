@@ -45,8 +45,8 @@ namespace PhoneBook.WebApi.Controllers
         [HttpGet("withcontactinfos{id}")]
         public IActionResult GetByIdWithContactInfos(Guid id)
         {
-            Person personList = _personService.GetPersonByIdWithContactInfos(id);
-            return Ok(personList);
+            Person person = _personService.GetPersonByIdWithContactInfos(id);
+            return Ok(person);
         }
 
         [HttpPost]

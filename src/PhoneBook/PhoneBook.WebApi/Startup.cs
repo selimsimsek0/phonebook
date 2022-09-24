@@ -30,6 +30,7 @@ namespace PhoneBook.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IPersonService, PersonManager>();
+            services.AddScoped<IContactInfoService, ContactInfoManager>();
 
             services.ConfigureMapping();
 
