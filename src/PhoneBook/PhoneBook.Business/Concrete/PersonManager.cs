@@ -40,7 +40,7 @@ namespace PhoneBook.Business.Concrete
 
         public List<Person> GetAllPersonWithContactInfos()
         {
-            return _phoneBookUOW.PersonDal.GetAll(includes:"ContactInfos").ToList();
+            return _phoneBookUOW.PersonDal.GetAll(includes: "ContactInfos").ToList();
         }
 
         public Person GetPersonById(Guid id)
@@ -50,7 +50,7 @@ namespace PhoneBook.Business.Concrete
 
         public Person GetPersonByIdWithContactInfos(Guid id)
         {
-            return _phoneBookUOW.PersonDal.Get(id,"ContactInfos");
+            return _phoneBookUOW.PersonDal.Get(id, "ContactInfos");
         }
 
         public bool UpdatePerson(Person person)

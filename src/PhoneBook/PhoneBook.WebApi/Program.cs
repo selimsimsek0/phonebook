@@ -18,6 +18,12 @@ namespace PhoneBook.WebApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+            .ConfigureLogging(conf=>
+            {
+                conf.ClearProviders();
+                conf.AddConsole();
+                conf.AddDebug();
+            })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

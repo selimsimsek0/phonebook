@@ -37,7 +37,7 @@ namespace PhoneBook.Data.Concrete.EfCore
             IQueryable<T> query = _dbSet.Where(filter);
             foreach (string include in includes)
             {
-                query.Include(include);
+                query = query.Include(include);
             }
 
             return query.FirstOrDefault();
@@ -49,7 +49,7 @@ namespace PhoneBook.Data.Concrete.EfCore
 
             foreach (string include in includes)
             {
-                query.Include(include);
+                query = query.Include(include);
             }
 
             return query.FirstOrDefault();
@@ -59,11 +59,11 @@ namespace PhoneBook.Data.Concrete.EfCore
         {
             IQueryable<T> tList = _dbSet;
             if (filter != null)
-                tList.Where(filter);
+                tList = tList.Where(filter);
 
             foreach (string include in includes)
             {
-                tList.Include(include);
+                tList = tList.Include(include);
             }
             return tList;
         }
