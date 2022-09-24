@@ -13,6 +13,7 @@ using PhoneBook.WebApi.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace PhoneBook.WebApi
@@ -31,6 +32,9 @@ namespace PhoneBook.WebApi
         {
             services.AddScoped<IPersonService, PersonManager>();
             services.AddScoped<IContactInfoService, ContactInfoManager>();
+
+            services.AddControllersWithViews().AddJsonOptions(option =>
+           option.JsonSerializerOptions.ReferenceHandler = option.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
             services.ConfigureMapping();
 
@@ -51,7 +55,7 @@ namespace PhoneBook.WebApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PhoneBook.WebApi v1"));
             }
 
-           // app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
 
