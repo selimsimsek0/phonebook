@@ -1,4 +1,5 @@
 ﻿using PhoneBook.Business.Abstract;
+using PhoneBook.Business.DependencyResolvers.Ninject;
 using PhoneBook.Data.UnitOfWork.Abstract;
 using PhoneBook.Entity.Entity;
 using System;
@@ -10,9 +11,9 @@ namespace PhoneBook.Business.Concrete
     public class PersonManager : IPersonService
     {
         IPhoneBookUOW _phoneBookUOW;
-        public PersonManager(IPhoneBookUOW phoneBookUOW)
+        public PersonManager()
         {
-            _phoneBookUOW = phoneBookUOW;
+            _phoneBookUOW = NinjectInstanceFactory.GetInstance<IPhoneBookUOW>();
         }
         public bool AddPerson(Person person)
         {
