@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using PhoneBook.Business.Abstract;
 using PhoneBook.Business.Concrete;
 using PhoneBook.WebApi.Extensions;
+using PhoneBook.WebApi.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,7 @@ namespace PhoneBook.WebApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PhoneBook.WebApi v1"));
             }
 
-            // app.UseHttpsRedirection();
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             app.UseRouting();
 
