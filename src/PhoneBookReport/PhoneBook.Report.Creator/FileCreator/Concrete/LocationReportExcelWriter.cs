@@ -1,4 +1,5 @@
 ﻿using Microsoft.Office.Interop.Excel;
+using PhoneBook.Report.Business.Enums;
 using PhoneBook.Report.Creator.Common;
 using PhoneBook.Report.Creator.FileCreator.Abstract;
 using PhoneBook.Report.Entity.Entity;
@@ -11,14 +12,16 @@ namespace PhoneBook.Report.Creator.FileCreator.Concrete
 {
     public class LocationReportExcelWriter : IExcelWriter<LocationReport>
     {
-        public bool CreateFile(LocationReport entity, out string filePath)
+        public bool CreateFile(LocationReport entity, out string filePath, out string fileName)
         {
+            entity.ReportRequest.DocumentType = (int)Enums.DocumentType.Excel;
+
             filePath = FileWritePath.GetFullPath(FileWritePath.Path, FileWritePath.MainFolder, FileWritePath.LocationReportFolder);
             CreateFolders(filePath);
             string dateNow = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
             dateNow = dateNow.Replace("-", "");
-            string excelFile = $"LocationReport{dateNow}.xlsx";
-            string fullPath = Path.Combine(filePath, excelFile);
+            fileName = $"LocationReport{dateNow}.xlsx";
+            string fullPath = Path.Combine(filePath, fileName);
 
 
             Application excelApp = new Application();

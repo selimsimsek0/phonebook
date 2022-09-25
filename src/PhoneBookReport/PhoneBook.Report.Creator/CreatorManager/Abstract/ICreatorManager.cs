@@ -1,9 +1,9 @@
 ﻿using PhoneBook.Report.Entity;
 using System.Threading.Tasks;
 
-namespace PhoneBook.Report.Creator.ReportCreator.Abstract
+namespace PhoneBook.Report.Creator.CreatorManager.Abstract
 {
-    public interface IReportCreator<T>
+    public interface ICreatorManager<T>
         where T:IEntity
     {
         Task<bool> CreateReportAsync(T entity);
