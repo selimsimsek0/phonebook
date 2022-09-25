@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using PhoneBook.Report.Business.Abstract;
 using PhoneBook.Report.Business.Concrete;
+using PhoneBook.Report.WebApi.Extensions;
 
 namespace PhoneBook.Report.WebApi
 {
@@ -22,6 +23,7 @@ namespace PhoneBook.Report.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ILocationReportService, LocationReportManager>();
+            services.ConfigureMapping();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
