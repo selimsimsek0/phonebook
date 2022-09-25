@@ -2,5 +2,6 @@
 {
     public class LocationReportRequest:ReportRequest
     {
+        public  virtual LocationReport LocationReport { get; set; }
     }
 }

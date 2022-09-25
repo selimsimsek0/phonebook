@@ -34,7 +34,7 @@ namespace PhoneBook.Report.Data.Context
                 locationReport.Property(p => p.PersonCount).HasColumnType("double precision").IsRequired();
                 locationReport.Property(p => p.PhoneNumberCount).HasColumnType("double precision").IsRequired();
 
-                locationReport.HasOne(p => p.ReportRequest).WithOne().HasForeignKey<LocationReportRequest>(p => p.ReportId).HasConstraintName("locationreportrequest_locationreport_reportid_fk");
+                locationReport.HasOne(p => p.ReportRequest).WithOne(p=>p.LocationReport).HasForeignKey<LocationReportRequest>(p => p.ReportId).HasConstraintName("locationreportrequest_locationreport_reportid_fk");
             });
 
             modelBuilder.Entity<LocationReportRequest>(reportRequest =>
