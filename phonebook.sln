@@ -5,6 +5,7 @@ VisualStudioVersion = 16.0.32510.428
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{988FC917-A0AE-4670-86E4-F4C89822408C}"
 	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
 		ServiceUrls.txt = ServiceUrls.txt
 	EndProjectSection
 EndProject
@@ -30,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Report.Entity", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Report.Business", "src\PhoneBookReport\PhoneBook.Report.Business\PhoneBook.Report.Business.csproj", "{C4AA927F-63EC-4C1E-B82F-9677BC6B8345}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.FakeData", "src\PhoneBook\PhoneBook.FakeData\PhoneBook.FakeData.csproj", "{C9277E9C-1730-4DA4-BFA3-1B16C59E3806}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.FakeData", "src\PhoneBook\PhoneBook.FakeData\PhoneBook.FakeData.csproj", "{C9277E9C-1730-4DA4-BFA3-1B16C59E3806}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Report.Creator", "src\PhoneBookReport\PhoneBook.Report.Creator\PhoneBook.Report.Creator.csproj", "{499271FA-C8B0-400A-8E82-C4C3E6E6FDD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +77,10 @@ Global
 		{C9277E9C-1730-4DA4-BFA3-1B16C59E3806}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9277E9C-1730-4DA4-BFA3-1B16C59E3806}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9277E9C-1730-4DA4-BFA3-1B16C59E3806}.Release|Any CPU.Build.0 = Release|Any CPU
+		{499271FA-C8B0-400A-8E82-C4C3E6E6FDD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{499271FA-C8B0-400A-8E82-C4C3E6E6FDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{499271FA-C8B0-400A-8E82-C4C3E6E6FDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{499271FA-C8B0-400A-8E82-C4C3E6E6FDD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +97,7 @@ Global
 		{B5E41E90-215B-43D9-B4F0-BAD93D28172C} = {44500EF6-4447-4F6B-9503-EFB825C76074}
 		{C4AA927F-63EC-4C1E-B82F-9677BC6B8345} = {44500EF6-4447-4F6B-9503-EFB825C76074}
 		{C9277E9C-1730-4DA4-BFA3-1B16C59E3806} = {64242081-42B7-47DF-B548-BEAE3BF5223A}
+		{499271FA-C8B0-400A-8E82-C4C3E6E6FDD7} = {44500EF6-4447-4F6B-9503-EFB825C76074}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8897E98-0004-493D-9DB2-F21F4BA17186}

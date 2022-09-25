@@ -1,0 +1,26 @@
+version: '3.1'
+
+
+services:
+  s_pdb:
+    container_name: c_postgres
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=12345
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_USER=selimsimsek
+
+  s_rabbitmq:
+    container_name: c_rabitmq
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+
+volumes:
+  rabbitmq:
+
