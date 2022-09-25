@@ -1,10 +1,7 @@
 ﻿using Newtonsoft.Json;
 using PhoneBook.Report.Creator.ServiceModels;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PhoneBook.Report.Creator.Providers
@@ -37,7 +34,7 @@ namespace PhoneBook.Report.Creator.Providers
             }
             return retVal;
         }
-        public async Task<List<Person>> GetAllPersonsWithContact()
+        public async Task<List<Person>> GetAllPersonsWithContacts()
         {
             List<Person> retVal;
             try
