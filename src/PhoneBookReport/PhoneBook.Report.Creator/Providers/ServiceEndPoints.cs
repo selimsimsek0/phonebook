@@ -4,7 +4,7 @@
     {
         public static class PhoneBookService
         {
-            public static string Url => "http://localhost:5001/api/";
+            public static string Url => "http://localhost:6000/api/";
             public static string GetAllPerson => $"{Url}person";
             public static string GetAllPersonWithContacts => $"{Url}person/withcontactinfos";
             public static string GetAllContactsWithPerson => $"{Url}contactinfo/withperson";

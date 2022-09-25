@@ -15,4 +15,8 @@
     <ProjectReference Include="..\PhoneBook.Report.Entity\PhoneBook.Report.Entity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BackgroundServices\" />
+  </ItemGroup>
+
 </Project>
