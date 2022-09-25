@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhoneBook.Report.Creator.Providers
 {
-    public  class ConcactInfoService
+    public class ContactInfoService
     {
         private HttpClient GetHttpClient()
         {
@@ -15,7 +15,7 @@ namespace PhoneBook.Report.Creator.Providers
             client.DefaultRequestHeaders.ConnectionClose = true;
             return client;
         }
-        public async Task<List<ContactInfo>> GetAllPersons()
+        public async Task<List<ContactInfo>> GetAllContactInfosWithPerson()
         {
             List<ContactInfo> retVal;
             try
@@ -34,6 +34,6 @@ namespace PhoneBook.Report.Creator.Providers
             }
             return retVal;
         }
-        }
     }
+
 }
