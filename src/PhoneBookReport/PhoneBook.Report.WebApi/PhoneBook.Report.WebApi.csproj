@@ -9,7 +9,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\PhoneBook.Report.Business\PhoneBook.Report.Business.csproj" />
+    <ProjectReference Include="..\PhoneBook.Report.Data\PhoneBook.Report.Data.csproj" />
+    <ProjectReference Include="..\PhoneBook.Report.Entity\PhoneBook.Report.Entity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Extensions\" />
   </ItemGroup>
 
 </Project>
