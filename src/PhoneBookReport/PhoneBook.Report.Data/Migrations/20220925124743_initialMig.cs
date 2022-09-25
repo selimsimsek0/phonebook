@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PhoneBook.Report.Data.Migrations
 {
-    public partial class intialMig : Migration
+    public partial class initialMig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,6 +12,19 @@ namespace PhoneBook.Report.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "gen_random_uuid()"),
+                    CreationDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LocationReports", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LocationReportDetails",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "gen_random_uuid()"),
+                    ReportId = table.Column<Guid>(type: "uuid", nullable: false),
                     Location = table.Column<string>(type: "varchar(255)", nullable: false),
                     PersonCount = table.Column<double>(type: "double precision", nullable: false),
                     PhoneNumberCount = table.Column<double>(type: "double precision", nullable: false),
@@ -19,7 +32,13 @@ namespace PhoneBook.Report.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LocationReports", x => x.Id);
+                    table.PrimaryKey("PK_LocationReportDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "locationreportdetails_locationreport_reportid_fk",
+                        column: x => x.ReportId,
+                        principalTable: "LocationReports",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,6 +66,11 @@ namespace PhoneBook.Report.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_LocationReportDetails_ReportId",
+                table: "LocationReportDetails",
+                column: "ReportId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_LocationReportRequests_ReportId",
                 table: "LocationReportRequests",
                 column: "ReportId",
@@ -55,6 +79,9 @@ namespace PhoneBook.Report.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "LocationReportDetails");
+
             migrationBuilder.DropTable(
                 name: "LocationReportRequests");
 

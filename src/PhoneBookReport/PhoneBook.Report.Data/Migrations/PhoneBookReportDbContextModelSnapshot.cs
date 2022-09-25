@@ -29,6 +29,21 @@ namespace PhoneBook.Report.Data.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("timestamp without time zone");
 
+                    b.HasKey("Id");
+
+                    b.ToTable("LocationReports");
+                });
+
+            modelBuilder.Entity("PhoneBook.Report.Entity.Entity.LocationReportDetail", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasDefaultValueSql("gen_random_uuid()");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("varchar(255)");
@@ -39,9 +54,14 @@ namespace PhoneBook.Report.Data.Migrations
                     b.Property<double>("PhoneNumberCount")
                         .HasColumnType("double precision");
 
+                    b.Property<Guid>("ReportId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
-                    b.ToTable("LocationReports");
+                    b.HasIndex("ReportId");
+
+                    b.ToTable("LocationReportDetails");
                 });
 
             modelBuilder.Entity("PhoneBook.Report.Entity.Entity.LocationReportRequest", b =>
@@ -80,18 +100,32 @@ namespace PhoneBook.Report.Data.Migrations
                     b.ToTable("LocationReportRequests");
                 });
 
-            modelBuilder.Entity("PhoneBook.Report.Entity.Entity.LocationReportRequest", b =>
+            modelBuilder.Entity("PhoneBook.Report.Entity.Entity.LocationReportDetail", b =>
                 {
                     b.HasOne("PhoneBook.Report.Entity.Entity.LocationReport", null)
+                        .WithMany("ReportDetails")
+                        .HasForeignKey("ReportId")
+                        .HasConstraintName("locationreportdetails_locationreport_reportid_fk")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PhoneBook.Report.Entity.Entity.LocationReportRequest", b =>
+                {
+                    b.HasOne("PhoneBook.Report.Entity.Entity.LocationReport", "LocationReport")
                         .WithOne("ReportRequest")
                         .HasForeignKey("PhoneBook.Report.Entity.Entity.LocationReportRequest", "ReportId")
                         .HasConstraintName("locationreportrequest_locationreport_reportid_fk")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("LocationReport");
                 });
 
             modelBuilder.Entity("PhoneBook.Report.Entity.Entity.LocationReport", b =>
                 {
+                    b.Navigation("ReportDetails");
+
                     b.Navigation("ReportRequest");
                 });
 #pragma warning restore 612, 618

@@ -30,11 +30,21 @@ namespace PhoneBook.Report.Data.Context
                 locationReport.HasKey(p => p.Id);
                 locationReport.Property(p => p.CreationDate).IsRequired();
 
-                locationReport.Property(p => p.Location).HasColumnType("varchar(255)").IsRequired();
-                locationReport.Property(p => p.PersonCount).HasColumnType("double precision").IsRequired();
-                locationReport.Property(p => p.PhoneNumberCount).HasColumnType("double precision").IsRequired();
-
                 locationReport.HasOne(p => p.ReportRequest).WithOne(p=>p.LocationReport).HasForeignKey<LocationReportRequest>(p => p.ReportId).HasConstraintName("locationreportrequest_locationreport_reportid_fk");
+                locationReport.HasMany(p => p.ReportDetails).WithOne().HasForeignKey(p => p.ReportId).HasConstraintName("locationreportdetails_locationreport_reportid_fk");
+            });
+
+            modelBuilder.Entity<LocationReportDetail>(locationReportDetail =>
+            {
+                locationReportDetail.ToTable("LocationReportDetails");
+
+                locationReportDetail.Property(p => p.Id).HasColumnType("uuid").IsRequired().HasDefaultValueSql("gen_random_uuid()");
+                locationReportDetail.HasKey(p => p.Id);
+                locationReportDetail.Property(p => p.CreationDate).IsRequired();
+
+                locationReportDetail.Property(p => p.Location).HasColumnType("varchar(255)").IsRequired();
+                locationReportDetail.Property(p => p.PersonCount).HasColumnType("double precision").IsRequired();
+                locationReportDetail.Property(p => p.PhoneNumberCount).HasColumnType("double precision").IsRequired();
             });
 
             modelBuilder.Entity<LocationReportRequest>(reportRequest =>
@@ -58,6 +68,7 @@ namespace PhoneBook.Report.Data.Context
         }
 
         public DbSet<LocationReport> LocationReports { get; set; }
+        public DbSet<LocationReportDetail> LocationReportDetails { get; set; }
         public DbSet<LocationReportRequest> LocationReportRequests { get; set; }
     }
 }

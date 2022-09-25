@@ -12,5 +12,6 @@ namespace PhoneBook.Report.Business.Abstract
         bool Delete(LocationReport report);
         bool Add(LocationReport report);
         bool Update(LocationReport report);
+        public bool CreateExcelReport();
     }
 }

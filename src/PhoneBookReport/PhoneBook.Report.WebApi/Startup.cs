@@ -7,6 +7,8 @@ using Microsoft.OpenApi.Models;
 using PhoneBook.Report.Business.Abstract;
 using PhoneBook.Report.Business.Concrete;
 using PhoneBook.Report.WebApi.Extensions;
+using PhoneBook.Report.WebApi.Middlewares;
+using System.Text.Json.Serialization;
 
 namespace PhoneBook.Report.WebApi
 {
@@ -22,6 +24,9 @@ namespace PhoneBook.Report.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews().AddJsonOptions(option =>
+          option.JsonSerializerOptions.ReferenceHandler = option.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+
             services.AddScoped<ILocationReportService, LocationReportManager>();
             services.ConfigureMapping();
             services.AddControllers();
@@ -42,7 +47,7 @@ namespace PhoneBook.Report.WebApi
             }
 
             //app.UseHttpsRedirection();
-
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
             app.UseRouting();
 
             app.UseAuthorization();
