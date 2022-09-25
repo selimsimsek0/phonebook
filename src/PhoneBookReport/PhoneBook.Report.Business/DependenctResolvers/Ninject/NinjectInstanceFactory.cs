@@ -26,6 +26,7 @@ namespace PhoneBook.Report.Business.DependenctResolvers.Ninject
 
             _kernel.Bind<ILocationReportDal>().To<EfLocationReportDal>();
             _kernel.Bind<ILocationReportRequestDal>().To<EfLocationReportRequestDal>();
+            _kernel.Bind<ILocationReportDetailDal>().To<EfLocationReportDetailDal>();
 
             _kernel.Bind<IPhoneBookReportUOW>().To<EfPhoneBookReportUOW>();
 
