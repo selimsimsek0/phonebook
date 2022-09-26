@@ -57,7 +57,7 @@ namespace PhoneBook.Report.Creator.FileCreator.Concrete
             object False = false;
             XlFileFormat format = XlFileFormat.xlWorkbookDefault;
             worksheet.SaveAs(fullPath, format, missing, missing, missing, False, XlSaveAsAccessMode.xlNoChange, missing, False, missing);
-
+            excelBook.Close();
             return true;
         }
 

@@ -36,13 +36,13 @@ namespace PhoneBook.Report.Business.RabbitMQ
                 var bodyStr = Encoding.UTF8.GetString(byteArr);
 
                 LocationReport locationReport = JsonSerializer.Deserialize<LocationReport>(bodyStr);
-                
-                _locationReportCreator.CreateReportAsync(locationReport);
+
+                _locationReportCreator.CreateReportAsync(locationReport).GetAwaiter().GetResult();
 
 
             };
 
-            channel.BasicConsume(ConstantsRabbitMQ.QueueNames.LocationReport, false, consumerEvent);
+            channel.BasicConsume(ConstantsRabbitMQ.QueueNames.LocationReport, true, consumerEvent);
         }
     }
 }
