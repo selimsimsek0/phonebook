@@ -17,6 +17,7 @@ namespace PhoneBook.Report.Creator.Providers
         }
         public async Task<List<ContactInfo>> GetAllContactInfosWithPerson()
         {
+            //todo unit test
             List<ContactInfo> retVal;
             try
             {

@@ -15,6 +15,10 @@ namespace PhoneBook.Report.Business.Concrete
         {
             _reportUOW = NinjectInstanceFactory.GetInstance<IPhoneBookReportUOW>();
         }
+        public LocationReportRequestManager(IPhoneBookReportUOW reportUOW)
+        {
+            _reportUOW = reportUOW;
+        }
         public bool Add(LocationReportRequest reportRequest)
         {
             return _reportUOW.LocationReportRequestDal.Add(reportRequest);

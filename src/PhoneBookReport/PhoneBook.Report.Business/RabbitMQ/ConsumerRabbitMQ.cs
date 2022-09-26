@@ -39,7 +39,6 @@ namespace PhoneBook.Report.Business.RabbitMQ
                 
                 _locationReportCreator.CreateReportAsync(locationReport);
 
-                Console.WriteLine($"Received Data: {bodyStr}");
 
             };
 

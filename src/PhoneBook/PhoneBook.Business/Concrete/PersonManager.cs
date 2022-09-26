@@ -23,6 +23,7 @@ namespace PhoneBook.Business.Concrete
 
         public bool DeletePerson(Guid id)
         {
+            //todo unit test
             Person selectedPerson = GetPersonById(id);
             if (selectedPerson == null) return false;
 
@@ -36,6 +37,7 @@ namespace PhoneBook.Business.Concrete
 
         public bool GenerateFakePerson(int count)
         {
+            //todo unit test
             GenerateFakeData generateFakeData = new GenerateFakeData();
             List<Person> fakePersons = generateFakeData.GeneratePerons(count);
             List<ContactInfo> fakeContactInfos = generateFakeData.GenerateContactInfos(count * 2);

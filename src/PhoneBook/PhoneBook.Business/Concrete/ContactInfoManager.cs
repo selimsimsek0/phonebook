@@ -22,6 +22,7 @@ namespace PhoneBook.Business.Concrete
 
         public bool DeleteContactInfo(Guid id)
         {
+            //todo unit test
             ContactInfo selectedContactInfo = GetContactInfoById(id);
             if (selectedContactInfo == null) return false;
 

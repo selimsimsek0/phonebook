@@ -78,17 +78,11 @@ namespace PhoneBook.Report.Business.UnitTest
 
             LocationReportManager locationReportManager = new LocationReportManager(moqUOW.Object);
 
-            LocationReport locationReport = new LocationReport
-            {
-                CreationDate = DateTime.Now,
-                Id = Guid.NewGuid()
-            };
-
             #endregion
 
             #region Action
 
-           bool deleteAction= locationReportManager.Delete(locationReport);
+           bool deleteAction= locationReportManager.Delete(Guid.NewGuid());
 
             #endregion
 
