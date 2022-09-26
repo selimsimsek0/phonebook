@@ -48,7 +48,6 @@ namespace PhoneBook.Report.Business.Concrete
                 bool requestAddResult = _reportUOW.LocationReportRequestDal.Add(reportRequest);
                 if (requestAddResult == false) throw new Exception("Report request could not be added.");
 
-                //todo rabbitmq
                 newReport.ReportRequest = reportRequest;
                 ProcuderRabbitMQ.LocationReportPublishMessage(newReport);
 
