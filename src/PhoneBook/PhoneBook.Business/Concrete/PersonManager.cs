@@ -12,6 +12,12 @@ namespace PhoneBook.Business.Concrete
     public class PersonManager : IPersonService
     {
         IPhoneBookUOW _phoneBookUOW;
+
+        public PersonManager(IPhoneBookUOW phoneBookUOW)
+        {
+            _phoneBookUOW = phoneBookUOW;
+        }
+
         public PersonManager()
         {
             _phoneBookUOW = NinjectInstanceFactory.GetInstance<IPhoneBookUOW>();
@@ -23,7 +29,6 @@ namespace PhoneBook.Business.Concrete
 
         public bool DeletePerson(Guid id)
         {
-            //todo unit test
             Person selectedPerson = GetPersonById(id);
             if (selectedPerson == null) return false;
 
@@ -37,7 +42,6 @@ namespace PhoneBook.Business.Concrete
 
         public bool GenerateFakePerson(int count)
         {
-            //todo unit test
             GenerateFakeData generateFakeData = new GenerateFakeData();
             List<Person> fakePersons = generateFakeData.GeneratePerons(count);
             List<ContactInfo> fakeContactInfos = generateFakeData.GenerateContactInfos(count * 2);
@@ -48,12 +52,17 @@ namespace PhoneBook.Business.Concrete
                 int contactIndex = 0;
                 foreach (var fakePerson in fakePersons)
                 {
-                    _phoneBookUOW.PersonDal.Add(fakePerson);
+                    bool addPersonResult = _phoneBookUOW.PersonDal.Add(fakePerson);
+                    if (addPersonResult == false) throw new Exception();
+
                     fakeContactInfos[contactIndex].PersonId = fakePerson.Id;
-                    _phoneBookUOW.ContactInfoDal.Add(fakeContactInfos[contactIndex]);
+                    bool addContactResult = _phoneBookUOW.ContactInfoDal.Add(fakeContactInfos[contactIndex]);
+                    if (addContactResult == false) throw new Exception();
                     contactIndex++;
+
                     fakeContactInfos[contactIndex].PersonId = fakePerson.Id;
-                    _phoneBookUOW.ContactInfoDal.Add(fakeContactInfos[contactIndex]);
+                    addContactResult = _phoneBookUOW.ContactInfoDal.Add(fakeContactInfos[contactIndex]);
+                    if (addContactResult == false) throw new Exception();
                     contactIndex++;
                 }
 

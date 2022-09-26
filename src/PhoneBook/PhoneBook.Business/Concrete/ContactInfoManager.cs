@@ -11,6 +11,12 @@ namespace PhoneBook.Business.Concrete
     public class ContactInfoManager : IContactInfoService
     {
         IPhoneBookUOW _phoneBookUOW;
+
+        public ContactInfoManager(IPhoneBookUOW phoneBookUOW)
+        {
+            _phoneBookUOW = phoneBookUOW;
+        }
+
         public ContactInfoManager()
         {
             _phoneBookUOW = NinjectInstanceFactory.GetInstance<IPhoneBookUOW>();
@@ -22,7 +28,6 @@ namespace PhoneBook.Business.Concrete
 
         public bool DeleteContactInfo(Guid id)
         {
-            //todo unit test
             ContactInfo selectedContactInfo = GetContactInfoById(id);
             if (selectedContactInfo == null) return false;
 
