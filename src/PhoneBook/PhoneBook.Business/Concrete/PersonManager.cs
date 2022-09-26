@@ -1,4 +1,5 @@
 ﻿using PhoneBook.Business.Abstract;
+using PhoneBook.Business.Bogus;
 using PhoneBook.Business.DependencyResolvers.Ninject;
 using PhoneBook.Data.UnitOfWork.Abstract;
 using PhoneBook.Entity.Entity;
@@ -31,6 +32,38 @@ namespace PhoneBook.Business.Concrete
         public bool DeletePerson(Person person)
         {
             return _phoneBookUOW.PersonDal.Delete(person);
+        }
+
+        public bool GenerateFakePerson(int count)
+        {
+            GenerateFakeData generateFakeData = new GenerateFakeData();
+            List<Person> fakePersons = generateFakeData.GeneratePerons(count);
+            List<ContactInfo> fakeContactInfos = generateFakeData.GenerateContactInfos(count * 2);
+
+            _phoneBookUOW.NewTranaction();
+            try
+            {
+                int contactIndex = 0;
+                foreach (var fakePerson in fakePersons)
+                {
+                    _phoneBookUOW.PersonDal.Add(fakePerson);
+                    fakeContactInfos[contactIndex].PersonId = fakePerson.Id;
+                    _phoneBookUOW.ContactInfoDal.Add(fakeContactInfos[contactIndex]);
+                    contactIndex++;
+                    fakeContactInfos[contactIndex].PersonId = fakePerson.Id;
+                    _phoneBookUOW.ContactInfoDal.Add(fakeContactInfos[contactIndex]);
+                    contactIndex++;
+                }
+
+                _phoneBookUOW.Commit();
+            }
+            catch
+            {
+                _phoneBookUOW.RollBack();
+                throw;
+            }
+
+            return true;
         }
 
         public List<Person> GetAllPerson()
