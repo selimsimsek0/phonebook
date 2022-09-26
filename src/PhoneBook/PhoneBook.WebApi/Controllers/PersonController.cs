@@ -58,6 +58,13 @@ namespace PhoneBook.WebApi.Controllers
             else return BadRequest();
         }
 
+        [HttpPost("addfakeperson")]
+        public IActionResult Post(int count)
+        {
+            _personService.GenerateFakePerson(count);
+            return Ok();
+        }
+
         [HttpDelete]
         public IActionResult Delete([FromBody] Person person)
         {

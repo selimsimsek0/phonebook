@@ -77,12 +77,12 @@ namespace PhoneBook.Report.Business.Concrete
 
         public List<LocationReport> GetAllReport()
         {
-            return _reportUOW.LocationReportDal.GetAll(includes: "ReportRequest").ToList();
+            return _reportUOW.LocationReportDal.GetAll(null, "ReportRequest").ToList();
         }
 
         public LocationReport GetReport(Guid id)
         {
-            return _reportUOW.LocationReportDal.Get(id, "ReportRequest");
+            return _reportUOW.LocationReportDal.Get(id, "ReportRequest", "ReportDetails");
         }
 
         public bool Update(LocationReport report)

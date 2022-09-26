@@ -14,5 +14,6 @@ namespace PhoneBook.Business.Abstract
         bool DeletePerson(Person person);
         bool AddPerson(Person person);
         bool UpdatePerson(Person person);
+        bool GenerateFakePerson(int count);
     }
 }
