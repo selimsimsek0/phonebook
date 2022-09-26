@@ -17,6 +17,10 @@ namespace PhoneBook.Report.Business.Concrete
         {
             _reportUOW = NinjectInstanceFactory.GetInstance<IPhoneBookReportUOW>();
         }
+        public LocationReportManager(IPhoneBookReportUOW reportUOW)
+        {
+            _reportUOW = reportUOW;
+        }
         public bool Add(LocationReport report)
         {
             return _reportUOW.LocationReportDal.Add(report);
@@ -24,7 +28,6 @@ namespace PhoneBook.Report.Business.Concrete
 
         public bool CreateExcelReport()
         {
-            //todo unittest
             _reportUOW.NewTranaction();
            
             try

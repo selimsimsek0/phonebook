@@ -15,4 +15,8 @@
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PhoneBook.Report.Business\PhoneBook.Report.Business.csproj" />
+  </ItemGroup>
+
 </Project>
