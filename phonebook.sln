@@ -31,9 +31,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Report.Entity", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Report.Business", "src\PhoneBookReport\PhoneBook.Report.Business\PhoneBook.Report.Business.csproj", "{C4AA927F-63EC-4C1E-B82F-9677BC6B8345}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Report.Creator", "src\PhoneBookReport\PhoneBook.Report.Creator\PhoneBook.Report.Creator.csproj", "{499271FA-C8B0-400A-8E82-C4C3E6E6FDD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Report.Creator", "src\PhoneBookReport\PhoneBook.Report.Creator\PhoneBook.Report.Creator.csproj", "{499271FA-C8B0-400A-8E82-C4C3E6E6FDD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Report.Common", "src\PhoneBookReport\PhoneBook.Report.Common\PhoneBook.Report.Common.csproj", "{A243F2D8-A632-4FE2-B683-EFBB63E135D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Report.Common", "src\PhoneBookReport\PhoneBook.Report.Common\PhoneBook.Report.Common.csproj", "{A243F2D8-A632-4FE2-B683-EFBB63E135D7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Report.Business.UnitTest", "src\PhoneBookReport\PhoneBook.Report.Business.UnitTest\PhoneBook.Report.Business.UnitTest.csproj", "{2C18C78C-7DB0-4667-A487-FC34B0B97E0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Business.UnitTest", "src\PhoneBook\PhoneBook.Business.UnitTest\PhoneBook.Business.UnitTest.csproj", "{96893076-12A0-40E7-90A2-876C2590FEA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Report.Creator.UnitTests", "src\PhoneBookReport\PhoneBook.Report.Creator.UnitTests\PhoneBook.Report.Creator.UnitTests.csproj", "{F7932327-A712-4F88-91D9-F9308A1F99ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +87,18 @@ Global
 		{A243F2D8-A632-4FE2-B683-EFBB63E135D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A243F2D8-A632-4FE2-B683-EFBB63E135D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A243F2D8-A632-4FE2-B683-EFBB63E135D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C18C78C-7DB0-4667-A487-FC34B0B97E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C18C78C-7DB0-4667-A487-FC34B0B97E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C18C78C-7DB0-4667-A487-FC34B0B97E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C18C78C-7DB0-4667-A487-FC34B0B97E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96893076-12A0-40E7-90A2-876C2590FEA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96893076-12A0-40E7-90A2-876C2590FEA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96893076-12A0-40E7-90A2-876C2590FEA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96893076-12A0-40E7-90A2-876C2590FEA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7932327-A712-4F88-91D9-F9308A1F99ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7932327-A712-4F88-91D9-F9308A1F99ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7932327-A712-4F88-91D9-F9308A1F99ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7932327-A712-4F88-91D9-F9308A1F99ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +116,9 @@ Global
 		{C4AA927F-63EC-4C1E-B82F-9677BC6B8345} = {44500EF6-4447-4F6B-9503-EFB825C76074}
 		{499271FA-C8B0-400A-8E82-C4C3E6E6FDD7} = {44500EF6-4447-4F6B-9503-EFB825C76074}
 		{A243F2D8-A632-4FE2-B683-EFBB63E135D7} = {44500EF6-4447-4F6B-9503-EFB825C76074}
+		{2C18C78C-7DB0-4667-A487-FC34B0B97E0E} = {44500EF6-4447-4F6B-9503-EFB825C76074}
+		{96893076-12A0-40E7-90A2-876C2590FEA9} = {64242081-42B7-47DF-B548-BEAE3BF5223A}
+		{F7932327-A712-4F88-91D9-F9308A1F99ED} = {44500EF6-4447-4F6B-9503-EFB825C76074}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8897E98-0004-493D-9DB2-F21F4BA17186}

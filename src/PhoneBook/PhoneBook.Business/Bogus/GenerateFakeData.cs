@@ -16,13 +16,7 @@ namespace PhoneBook.Business.Bogus
                .RuleFor(i => i.Surname, p => p.Person.LastName)
                .RuleFor(i => i.Company, p => p.Person.Company.Name);
 
-            var contactFaker = new Faker<entity.ContactInfo>("tr")
-              .RuleFor(i => i.Id, Guid.Empty)
-              .RuleFor(i => i.CreationDate, DateTime.Now)
-              .RuleFor(i => i.PhoneNumber, p => p.Person.Phone)
-              .RuleFor(i => i.Location, p => p.Address.City())
-              .RuleFor(i => i.MailAddress, p => p.Person.Email);
-
+         
             List<entity.Person> fakePersons = personFaker.Generate(count);
 
             return fakePersons;

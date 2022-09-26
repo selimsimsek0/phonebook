@@ -11,6 +11,12 @@ namespace PhoneBook.Business.Concrete
     public class ContactInfoManager : IContactInfoService
     {
         IPhoneBookUOW _phoneBookUOW;
+
+        public ContactInfoManager(IPhoneBookUOW phoneBookUOW)
+        {
+            _phoneBookUOW = phoneBookUOW;
+        }
+
         public ContactInfoManager()
         {
             _phoneBookUOW = NinjectInstanceFactory.GetInstance<IPhoneBookUOW>();

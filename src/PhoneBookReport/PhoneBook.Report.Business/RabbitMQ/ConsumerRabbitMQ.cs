@@ -36,10 +36,9 @@ namespace PhoneBook.Report.Business.RabbitMQ
                 var bodyStr = Encoding.UTF8.GetString(byteArr);
 
                 LocationReport locationReport = JsonSerializer.Deserialize<LocationReport>(bodyStr);
-                //todo reportcreate
+                
                 _locationReportCreator.CreateReportAsync(locationReport);
 
-                Console.WriteLine($"Received Data: {bodyStr}");
 
             };
 

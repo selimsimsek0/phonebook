@@ -17,6 +17,10 @@ namespace PhoneBook.Report.Business.Concrete
         {
             _reportUOW = NinjectInstanceFactory.GetInstance<IPhoneBookReportUOW>();
         }
+        public LocationReportManager(IPhoneBookReportUOW reportUOW)
+        {
+            _reportUOW = reportUOW;
+        }
         public bool Add(LocationReport report)
         {
             return _reportUOW.LocationReportDal.Add(report);
@@ -24,7 +28,6 @@ namespace PhoneBook.Report.Business.Concrete
 
         public bool CreateExcelReport()
         {
-            //unittest
             _reportUOW.NewTranaction();
            
             try
@@ -48,7 +51,6 @@ namespace PhoneBook.Report.Business.Concrete
                 bool requestAddResult = _reportUOW.LocationReportRequestDal.Add(reportRequest);
                 if (requestAddResult == false) throw new Exception("Report request could not be added.");
 
-                //todo rabbitmq
                 newReport.ReportRequest = reportRequest;
                 ProcuderRabbitMQ.LocationReportPublishMessage(newReport);
 

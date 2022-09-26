@@ -12,6 +12,12 @@ namespace PhoneBook.Business.Concrete
     public class PersonManager : IPersonService
     {
         IPhoneBookUOW _phoneBookUOW;
+
+        public PersonManager(IPhoneBookUOW phoneBookUOW)
+        {
+            _phoneBookUOW = phoneBookUOW;
+        }
+
         public PersonManager()
         {
             _phoneBookUOW = NinjectInstanceFactory.GetInstance<IPhoneBookUOW>();
@@ -46,12 +52,17 @@ namespace PhoneBook.Business.Concrete
                 int contactIndex = 0;
                 foreach (var fakePerson in fakePersons)
                 {
-                    _phoneBookUOW.PersonDal.Add(fakePerson);
+                    bool addPersonResult = _phoneBookUOW.PersonDal.Add(fakePerson);
+                    if (addPersonResult == false) throw new Exception();
+
                     fakeContactInfos[contactIndex].PersonId = fakePerson.Id;
-                    _phoneBookUOW.ContactInfoDal.Add(fakeContactInfos[contactIndex]);
+                    bool addContactResult = _phoneBookUOW.ContactInfoDal.Add(fakeContactInfos[contactIndex]);
+                    if (addContactResult == false) throw new Exception();
                     contactIndex++;
+
                     fakeContactInfos[contactIndex].PersonId = fakePerson.Id;
-                    _phoneBookUOW.ContactInfoDal.Add(fakeContactInfos[contactIndex]);
+                    addContactResult = _phoneBookUOW.ContactInfoDal.Add(fakeContactInfos[contactIndex]);
+                    if (addContactResult == false) throw new Exception();
                     contactIndex++;
                 }
 
