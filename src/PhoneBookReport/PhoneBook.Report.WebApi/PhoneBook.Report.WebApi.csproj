@@ -6,17 +6,16 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PhoneBook.Report.Business\PhoneBook.Report.Business.csproj" />
+    <ProjectReference Include="..\PhoneBook.Report.Common\PhoneBook.Report.Common.csproj" />
+    <ProjectReference Include="..\PhoneBook.Report.Creator\PhoneBook.Report.Creator.csproj" />
     <ProjectReference Include="..\PhoneBook.Report.Data\PhoneBook.Report.Data.csproj" />
     <ProjectReference Include="..\PhoneBook.Report.Entity\PhoneBook.Report.Entity.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="BackgroundServices\" />
   </ItemGroup>
 
 </Project>

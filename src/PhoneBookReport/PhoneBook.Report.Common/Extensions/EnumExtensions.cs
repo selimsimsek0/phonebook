@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PhoneBook.Report.Business.Extensions
+namespace PhoneBook.Report.Common.Extensions
 {
     public static class EnumExtensions
     {

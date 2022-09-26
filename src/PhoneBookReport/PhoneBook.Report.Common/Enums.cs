@@ -1,6 +1,6 @@
-﻿using PhoneBook.Report.Business.Extensions;
+﻿using PhoneBook.Report.Common.Extensions;
 
-namespace PhoneBook.Report.Business.Enums
+namespace PhoneBook.Report.Common
 {
     public static class Enums
     {
