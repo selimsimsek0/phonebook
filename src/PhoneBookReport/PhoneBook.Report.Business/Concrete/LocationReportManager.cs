@@ -1,5 +1,7 @@
 ﻿using PhoneBook.Report.Business.Abstract;
 using PhoneBook.Report.Business.DependenctResolvers.Ninject;
+using PhoneBook.Report.Business.RabbitMQ;
+using PhoneBook.Report.Common;
 using PhoneBook.Report.Data.UnitOfWork.Abstract;
 using PhoneBook.Report.Entity.Entity;
 using System;
@@ -40,13 +42,16 @@ namespace PhoneBook.Report.Business.Concrete
                     ReportId = newReport.Id,
                     CreationDate = DateTime.Now,
                     CompletedDate = DateTime.Now,
-                    DocumentType = (int)Enums.Enums.DocumentType.Excel,
-                    Status = (int)Enums.Enums.CreatedStatus.InQueue
+                    DocumentType = (int)Enums.DocumentType.Excel,
+                    Status = (int)Enums.CreatedStatus.InQueue
                 };
                 bool requestAddResult = _reportUOW.LocationReportRequestDal.Add(reportRequest);
                 if (requestAddResult == false) throw new Exception("Report request could not be added.");
 
                 //todo rabbitmq
+                newReport.ReportRequest = reportRequest;
+                ProcuderRabbitMQ.LocationReportPublishMessage(newReport);
+
                 _reportUOW.Commit();
                 return true;
               

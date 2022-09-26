@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using PhoneBook.Report.Business.Abstract;
 using PhoneBook.Report.Business.Concrete;
+using PhoneBook.Report.WebApi.BackgroundServices;
 using PhoneBook.Report.WebApi.Extensions;
 using PhoneBook.Report.WebApi.Middlewares;
 using System.Text.Json.Serialization;
@@ -27,6 +28,7 @@ namespace PhoneBook.Report.WebApi
             services.AddControllersWithViews().AddJsonOptions(option =>
           option.JsonSerializerOptions.ReferenceHandler = option.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
+            services.AddHostedService<ConsumerRabbitMQBackground>();
             services.AddScoped<ILocationReportService, LocationReportManager>();
             services.ConfigureMapping();
             services.AddControllers();

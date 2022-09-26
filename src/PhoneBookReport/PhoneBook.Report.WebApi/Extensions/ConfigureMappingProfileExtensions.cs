@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
-using PhoneBook.Report.Business.Enums;
-using PhoneBook.Report.Business.Extensions;
+using PhoneBook.Report.Common;
+using PhoneBook.Report.Common.Extensions;
 using PhoneBook.Report.Entity.DTO;
 using PhoneBook.Report.Entity.Entity;
 using System;

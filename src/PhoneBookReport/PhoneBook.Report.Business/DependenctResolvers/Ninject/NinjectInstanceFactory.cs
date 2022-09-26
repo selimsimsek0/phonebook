@@ -23,6 +23,7 @@ namespace PhoneBook.Report.Business.DependenctResolvers.Ninject
             _kernel = new StandardKernel();
 
             _kernel.Bind<DbContext>().To<PhoneBookReportDbContext>();
+            
 
             _kernel.Bind<ILocationReportDal>().To<EfLocationReportDal>();
             _kernel.Bind<ILocationReportRequestDal>().To<EfLocationReportRequestDal>();

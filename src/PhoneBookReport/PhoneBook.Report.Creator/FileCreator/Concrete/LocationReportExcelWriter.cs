@@ -1,5 +1,5 @@
 ﻿using Microsoft.Office.Interop.Excel;
-using PhoneBook.Report.Business.Enums;
+using PhoneBook.Report.Common;
 using PhoneBook.Report.Creator.Common;
 using PhoneBook.Report.Creator.FileCreator.Abstract;
 using PhoneBook.Report.Entity.Entity;
