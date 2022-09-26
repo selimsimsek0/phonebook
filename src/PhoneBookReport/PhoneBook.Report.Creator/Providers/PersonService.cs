@@ -17,7 +17,6 @@ namespace PhoneBook.Report.Creator.Providers
         }
         public async Task<List<Person>> GetAllPersons()
         {
-            //todo unit test
             List<Person> retVal;
             try
             {
@@ -37,7 +36,6 @@ namespace PhoneBook.Report.Creator.Providers
         }
         public async Task<List<Person>> GetAllPersonsWithContacts()
         {
-            //todo unit test
             List<Person> retVal;
             try
             {
