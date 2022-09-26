@@ -32,6 +32,7 @@ namespace PhoneBook.Report.Creator.CreatorManager.Concrete
 
                 if (_fileWriter.CreateFile(selectedReport, out string filePath, out string fileName))
                 {
+                    selectedReport.ReportRequest.CompletedDate = DateTime.Now;
                     selectedReport.ReportRequest.DocumentPath = filePath;
                     selectedReport.ReportRequest.DocumentName = fileName;
                     selectedReport.ReportRequest.Status = (int)Enums.CreatedStatus.Created;
